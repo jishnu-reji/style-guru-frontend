@@ -1,0 +1,40 @@
+<app-header></app-header>
+<div class="pt-5 d-flex justify-content-center align-items-center">
+    <div class="delivery w-50 my-5">
+        <div *ngIf="!checkoutStatus">
+            <h1 class="mb-3 text-center text-primary">Delivery Details!!!</h1>
+            <form [formGroup]="checkoutForm" class="border rounded p-3">
+                <div class="form-floating mb-3">
+                    <input name="username" formControlName="username" type="text" class="form-control" id="floatingInputname" placeholder="Username">
+                    <label for="floatingInputname">Username</label>
+                  </div>
+                  <!-- <div class="text-danger mb-3">*Invalid Username!!!</div> -->
+                <div class="form-floating mb-3">
+                    <input name="address" formControlName="address" type="text" class="form-control" id="floatingInputadd" placeholder="Address">
+                    <label for="floatingInputAddress">Address</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input name="pincode" formControlName="pincode" type="text" class="form-control" id="floatingInputcode" placeholder="Pincode">
+                    <label for="floatingInputcode">Pincode</label>
+                  </div>
+                  
+                  <div class="mt-4 d-flex justify-content-center align-items-center">
+                    <button (click)="cancel()" class="btn btn-warning me-3">Cancel</button>
+                    <button (click)="proceedToBuy()" class="btn btn-success">Proceed to Buy</button>
+                  </div>
+            </form>
+        </div>
+        <div *ngIf="checkoutStatus">
+            <h1>Payment Details!!!</h1>
+            <hr>
+            <span class="fw-bolder mb-3">To address</span>
+            <h5>{{checkoutForm.value.username}}</h5>
+            <h5>{{checkoutForm.value.address}}</h5>
+            <h5>{{checkoutForm.value.pincode}}</h5>
+            <h4 class="text-danger">Total Amount : $ 10</h4>
+            <div class="payment mt-5">
+                <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+            </div>
+        </div>
+    </div>
+</div>

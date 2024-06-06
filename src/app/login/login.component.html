@@ -1,0 +1,36 @@
+<div class='log'>
+    <div style="height: 100vh;" class="d-flex justify-content-center align-items-center">
+        <div  class="row r1 border rounded p-5">
+            <div class="pp2 col-lg-8 d-flex justify-content-center align-items-center">
+                <img class='img-fluid' src="https://cdni.iconscout.com/illustration/premium/thumb/user-login-4268415-3551762.png" alt="" />
+            </div>
+            <div class="pp1 d-flex flex-column justify-content-center align-items-center col-lg-4">
+                <img class='pb-3' style="width: 30%;" src="" alt="" />
+                
+                    <h2 class='fw-bolder'>LOGIN</h2>
+                
+                <p>Login to explore more</p>
+                
+               <form (ngSubmit)="login()" [formGroup]="loginForm">
+                    <input style="background-color: #b8b3f8;" name="email" formControlName="email" class='form-control w-100 mb-3' type="mail" placeholder='email'/>
+                    <div *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched" class="text-danger mb-3 fw-bolder">*Invalid email</div>
+
+                    <input style="background-color: #b8b3f8;" name="password" formControlName="password" class='form-control w-199 mb-3' type="password" placeholder='Password'/>
+                    <div *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched" class="text-danger mb-3 fw-bolder">*Invalid password</div>
+
+    
+                    <div class="text-center"><button type="submit" class='btn btn-success'>Login Now</button></div>
+               </form>
+                
+                               
+                <div class='line w-75'></div>
+                
+                <div class="mt-2">
+                    
+                        <p>Dont have an account?<a routerLink="/register">Register</a></p>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
